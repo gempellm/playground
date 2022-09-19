@@ -8,14 +8,14 @@ import (
 
 var parallelFactor = 100_0
 
-func Benchmark_RWMutex(b *testing.B) {
+func Benchmark_RWMutex_BalancedLoad(b *testing.B) {
 	c := rwcache.NewRWCache()
 	for i := 0; i < b.N; i++ {
 		emulateLoad(b, c, parallelFactor)
 	}
 }
 
-func Benchmark_Mutex(b *testing.B) {
+func Benchmark_Mutex_BalancedLoad(b *testing.B) {
 	c := mcache.NewMCache()
 	for i := 0; i < b.N; i++ {
 		emulateLoad(b, c, parallelFactor)
