@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-var parallelFactor = 100_0
+var parallelFactor = 100_000
 
 func Benchmark_RWMutex_BalancedLoad(b *testing.B) {
 	c := rwcache.NewRWCache()

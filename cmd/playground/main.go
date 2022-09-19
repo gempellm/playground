@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"gempellm/playground/internal/rwcache"
-	"sync"
 )
 
 func printChan(ch chan int) {
@@ -14,70 +12,70 @@ func printChan(ch chan int) {
 
 func main() {
 
-	c := rwcache.NewRWCache()
-	c.Storage["test"] = "test"
-	fmt.Printf("%#+v\n", c)
+	// c := rwcache.NewRWCache()
+	// c.Storage["test"] = "test"
+	// fmt.Printf("%#+v\n", c)
 	// c.Set("hello", "world")
 	// fmt.Println(c.Get("hello"))
 	// c.Delete("hello")
 	// fmt.Println(c.Get("hello"))
 
-	wg := sync.WaitGroup{}
+	// wg := sync.WaitGroup{}
 
-	for i := 0; i < 100; i++ {
-		wg.Add(1)
-		go func(k int) {
-			err := c.Set(fmt.Sprint(k), fmt.Sprint(k))
-			if err != nil {
-				fmt.Printf("error occured at i = %d, error = %e", k, err)
-			}
+	// for i := 0; i < 100; i++ {
+	// 	wg.Add(1)
+	// 	go func(k int) {
+	// 		err := c.Set(fmt.Sprint(k), fmt.Sprint(k))
+	// 		if err != nil {
+	// 			fmt.Printf("error occured at i = %d, error = %e", k, err)
+	// 		}
 
-			// err = c.Delete(fmt.Sprint(k - 1))
-			// if err != nil {
-			// 	fmt.Printf("error occured at i = %d, error = %e", k, err)
-			// }
-			wg.Done()
-		}(i)
-		//go c.Delete(fmt.Sprint(i))
-	}
+	// 		// err = c.Delete(fmt.Sprint(k - 1))
+	// 		// if err != nil {
+	// 		// 	fmt.Printf("error occured at i = %d, error = %e", k, err)
+	// 		// }
+	// 		wg.Done()
+	// 	}(i)
+	// 	//go c.Delete(fmt.Sprint(i))
+	// }
 
-	wg.Wait()
-	fmt.Printf("%#+v\n", c)
-	fmt.Printf("len(storage) = %d\n", len(c.Storage))
+	// wg.Wait()
+	// fmt.Printf("%#+v\n", c)
+	// fmt.Printf("len(storage) = %d\n", len(c.Storage))
 
-	for i := 0; i < 100; i++ {
-		wg.Add(1)
-		go func(k int) {
-			value, err := c.Get(fmt.Sprint(k))
-			if err != nil {
-				fmt.Printf("error occured at i = %d, error = %e", k, err)
-			}
+	// for i := 0; i < 100; i++ {
+	// 	wg.Add(1)
+	// 	go func(k int) {
+	// 		value, err := c.Get(fmt.Sprint(k))
+	// 		if err != nil {
+	// 			fmt.Printf("error occured at i = %d, error = %e", k, err)
+	// 		}
 
-			fmt.Printf("value = %s\n", value)
+	// 		fmt.Printf("value = %s\n", value)
 
-			// err = c.Delete(fmt.Sprint(k - 1))
-			// if err != nil {
-			// 	fmt.Printf("error occured at i = %d, error = %e", k, err)
-			// }
-			wg.Done()
-		}(i)
-	}
+	// 		// err = c.Delete(fmt.Sprint(k - 1))
+	// 		// if err != nil {
+	// 		// 	fmt.Printf("error occured at i = %d, error = %e", k, err)
+	// 		// }
+	// 		wg.Done()
+	// 	}(i)
+	// }
 
-	wg.Wait()
+	// wg.Wait()
 
-	for i := 0; i < 100; i++ {
-		wg.Add(1)
-		go func(k int) {
-			err := c.Delete(fmt.Sprint(k))
-			if err != nil {
-				fmt.Printf("error occured at i = %d, error = %e", k, err)
-			}
-			wg.Done()
-		}(i)
-	}
+	// for i := 0; i < 100; i++ {
+	// 	wg.Add(1)
+	// 	go func(k int) {
+	// 		err := c.Delete(fmt.Sprint(k))
+	// 		if err != nil {
+	// 			fmt.Printf("error occured at i = %d, error = %e", k, err)
+	// 		}
+	// 		wg.Done()
+	// 	}(i)
+	// }
 
-	wg.Wait()
-	fmt.Println("Final Storage state = ", c.Storage)
+	// wg.Wait()
+	// fmt.Println("Final Storage state = ", c.Storage)
 
 	// cs := map[string]int{"касса": 0}
 	// mu := sync.Mutex{}

@@ -16,7 +16,7 @@ type RWCache struct {
 	StorageRWMutex *sync.RWMutex
 }
 
-func NewRWCache() *RWCache {
+func NewRWCache() Cache {
 	return &RWCache{
 		Storage:        make(map[string]string),
 		StorageRWMutex: &sync.RWMutex{},

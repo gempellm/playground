@@ -45,12 +45,6 @@ func Test_Cache(t *testing.T) {
 		assert.NoError(t, err)
 		assert.Equal(t, newValue, newStoredValue)
 
-		anotherValue := "someValue#3"
-		testCache.Storage[key] = anotherValue
-		newAnotherValue, err := testCache.Get(key)
-		assert.NoError(t, err)
-		assert.Equal(t, anotherValue, newAnotherValue)
-
 	})
 
 	t.Run("no data races", func(t *testing.T) {

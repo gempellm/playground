@@ -16,7 +16,7 @@ type MCache struct {
 	StorageMutex *sync.Mutex
 }
 
-func NewMCache() *MCache {
+func NewMCache() Cache {
 	return &MCache{
 		Storage:      make(map[string]string),
 		StorageMutex: &sync.Mutex{},

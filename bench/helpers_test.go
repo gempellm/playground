@@ -61,7 +61,7 @@ func emulateLoad(b *testing.B, c Cache, parallelFactor int) {
 func emulateLoadIntenseRead(b *testing.B, c Cache, parallelFactor int) {
 	wg := sync.WaitGroup{}
 
-	for i := 0; i < parallelFactor/10; i++ {
+	for i := 0; i < parallelFactor/100; i++ {
 		key := fmt.Sprintf("%d-key", i)
 		value := fmt.Sprintf("%d-value", i)
 
