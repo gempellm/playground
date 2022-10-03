@@ -1,8 +1,8 @@
 package bench
 
 import (
-	"gempellm/playground/internal/mcache"
-	"gempellm/playground/internal/rwcache"
+	"gempellm/playground/internal/async_cache/mcache"
+	"gempellm/playground/internal/async_cache/rwcache"
 	"testing"
 )
 

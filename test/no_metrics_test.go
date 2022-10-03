@@ -1,7 +1,7 @@
 package test
 
 import (
-	cache "gempellm/playground/internal/mcache"
+	cache "gempellm/playground/internal/async_cache/mcache"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
