@@ -12,6 +12,12 @@ func printChan(ch chan int) {
 
 func main() {
 
+	x := 3
+	y := &x
+	fmt.Print(*y)
+	*y = 4
+	fmt.Println(x)
+
 	// c := rwcache.NewRWCache()
 	// c.Storage["test"] = "test"
 	// fmt.Printf("%#+v\n", c)
