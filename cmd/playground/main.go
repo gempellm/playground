@@ -2,6 +2,9 @@ package main
 
 import (
 	"fmt"
+	p "gempellm/playground/internal/protobuf/go/pb/my"
+
+	"github.com/golang/protobuf/proto"
 )
 
 func printChan(ch chan int) {
@@ -12,11 +15,26 @@ func printChan(ch chan int) {
 
 func main() {
 
-	x := 3
-	y := &x
-	fmt.Print(*y)
-	*y = 4
-	fmt.Println(x)
+	marshalledProto, _ := proto.Marshal(&p.SellParams{
+		Result: []*p.SellParams_Item{
+			{SellerId: 4},
+			{Rating: 10},
+		},
+	})
+
+	fmt.Println(marshalledProto)
+
+	var sparams p.SellParams
+
+	proto.Unmarshal(marshalledProto, &sparams)
+
+	fmt.Println(sparams)
+
+	// x := 3
+	// y := &x
+	// fmt.Print(*y)
+	// *y = 4
+	// fmt.Println(x)
 
 	// c := rwcache.NewRWCache()
 	// c.Storage["test"] = "test"
